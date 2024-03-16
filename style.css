@@ -1,9 +1,12 @@
-
+/* body{
+    background-color: black;
+    color: white;
+} */
 
 .left{
-    width: 25vw;
+    width: 27vw;
 }
 
 .right{
-    width: 75vw;
+    width: 73vw;
 }
