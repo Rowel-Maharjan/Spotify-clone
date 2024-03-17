@@ -10,20 +10,71 @@
 </head>
 <body>
     <div class="container flex">
-        <div class="left border">
-            <div class="home">
-                <div class="logo"><img src="/images/logo.svg" alt=""></div>
-                <ul>
-                    <li><img src="/images/home.svg" alt="Home"></li>
-                    <li><img src="/images/search.svg" alt="Search"></li>
+        <div class="left">
+            <div class="home bg-gray p-1 rounded">
+                <div class="logo"><img src="/images/logo.svg" alt="Logo"></div>
+                <ul class="f-1-light">
+                    <li class = "small-logo"><img src="/images/home.svg" alt="Home">Home</li>
+                    <li class = "small-logo"><img src="/images/search.svg" alt="Search">Search</li>
                 </ul>
             </div>
-            <div class="library"></div>
+            
+            <div class="library bg-gray rounded flex-c">
+                <div class="okay flex">
+                    <div class="lib small-logo flex p-1 f-1-light"><img src="/images/library.svg" alt="Library">Your Library</div>
+
+                    <div class="p-1 icon-width">
+                        <button><img src="/images/plus.svg" alt="Add"></button>
+                    </div>
+                </div>
+
+                <div class="box flex-c">
+                    <div class="left-gap bg-black p-2 rounded flex-c">
+                        <div class = "f-1">Create your first playlist</div>
+                        <div class = "f-2">It's easy, we'll help you</div>
+                        <div>
+                            <button class = "left-button">Create playlist</button>
+                        </div>
+                    </div>
+                    <div class="left-gap bg-black p-2 rounded flex-c">
+                        <div class = "f-1">Let's find some podcast to follow</div>
+                        <div class = "f-2">We'll keep you updated on new episodes</div>
+                        <div>
+                            <button class = "left-button">Browse podcasts</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer flex-c p-1 f-3">
+                    <div class="foot flex">
+                        <a href="#">Legal</a>
+                        <a href="#">Safety & Privacy Center</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Cookies</a>
+                        <a href="#">About Ads</a>
+                        <a href="#">Accessibility</a>
+                    </div>
+                    <div class = "below">
+                        <a href="#">Cookies</a>
+                    </div>
+                </div>
+
+                <div class="p-1">
+                    <button class="left-button f-2 flex icon-width" id = "world">
+                        <img src="/images/world.svg" alt="">
+                        English
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class="right bg-black">
 
         </div>
-        <div class="right border">
 
-        </div>
+
     </div>
     <script src="script.js"></script>
 </body>

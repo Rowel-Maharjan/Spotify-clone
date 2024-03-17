@@ -1,12 +1,112 @@
-/* body{
+*{
+    font-family: "Roboto", sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
     background-color: black;
-    color: white;
-} */
+    color: white
+}
+
+.container{
+    padding: 8px;
+    gap: 7px;
+}
 
 .left{
-    width: 27vw;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .right{
-    width: 73vw;
+    width: 79vw;
+    border-radius: 8px;
 }
+
+.logo img{
+    width: 55px;
+}
+
+.home ul li{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 13px;
+    margin: 16px 0px 0px 0px;
+    cursor: pointer;
+}
+
+.home ul li:hover{
+    
+}
+
+.library{
+    min-height: 70vh;
+    
+}
+
+.lib{
+    align-items: center;
+    gap:13px;
+}
+
+.okay{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.okay button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.box{
+    padding: 0px 5px;
+    gap: 22px;
+}
+
+.left-gap{
+    gap: 8px;
+}
+
+.left-gap button{
+    margin-top: 7px;
+}
+
+.footer{
+    gap: 10px;
+    margin-top: 45px;
+}
+
+.foot{
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.foot a{
+    color: rgb(167, 167, 167);
+    text-decoration: none;
+}
+
+.below a{
+    text-decoration: none;
+    color: rgb(179, 179, 179);
+}
+
+.below a:hover{
+    text-decoration: underline;
+}
+
+#world{
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
