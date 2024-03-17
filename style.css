@@ -15,19 +15,19 @@ body{
 }
 
 .left{
-    width: 20vw;
+    width: 22vw;
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
 .right{
-    width: 79vw;
+    width: 78vw;
     border-radius: 8px;
 }
 
 .logo img{
-    width: 55px;
+    width: 60px;
 }
 
 .home ul li{
@@ -39,13 +39,14 @@ body{
     cursor: pointer;
 }
 
-.home ul li:hover{
-    
+.home ul li:hover img{
+    fill: aqua;
 }
 
+
+
 .library{
-    min-height: 70vh;
-    
+    min-height: 75vh;
 }
 
 .lib{
