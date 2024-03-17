@@ -30,6 +30,10 @@
     background-color: rgb(36, 36, 36);
 }
 
+.bg-black1{
+    background-color: rgb(16,16,16);
+}
+
 .small-logo img{
     width: 20px;
 }
