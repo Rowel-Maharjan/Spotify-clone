@@ -14,6 +14,10 @@
     flex-direction: column;
 }
 
+.grid{
+    display: grid;
+}
+
 .justify-center{
     justify-content: center;
 }
@@ -46,10 +50,20 @@
     padding: 10px 15px;
 }
 
+.pointer{
+    cursor: pointer;
+}
+.pointer:hover{
+    text-decoration: underline;
+}
+
 .rounded{
     border-radius: 8px;
 }
 
+.rounded-1{
+    border-radius: 4px;
+}
 .left-button{
     border-radius: 10px;
     padding: 4px 10px;
@@ -58,6 +72,10 @@
     font-weight: 500;
     border: none;
     cursor: pointer;
+}
+.left-button:hover{
+    transform: scale(1.03,1.01);
+    font-weight: 700;
 }
 
 .icon-width img{
@@ -82,9 +100,24 @@
     color: rgb(255, 255, 255);
 }
 
+.f-2-light{
+    font-size: 10px;
+    font-weight: 400;
+    color: rgb(179, 179, 179);
+}
+
 .f-3{
     font-size: 8px;
     font-weight: 400;
 }
 
+.f-4{
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+}
+
   
+
+
+
