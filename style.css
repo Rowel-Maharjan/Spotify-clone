@@ -115,7 +115,7 @@ body{
 }
 
 .right{
-    width: 78vw;
+    width: 100vw;
     border-radius: 8px;
     max-height: calc(88vh + 4px);
     overflow: auto;
@@ -182,9 +182,6 @@ body{
     flex-wrap: wrap;
     overflow-y: auto;
     max-height: 70vh;
-    /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
-    /* overflow: hidden; */
-    /* grid-template-rows: 1fr */
 }
 
 .card{
@@ -221,4 +218,27 @@ body{
     transform: scale(1.04);
 }
 
+
+::-webkit-scrollbar {
+    width: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #535353; 
+ 
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+
+::-webkit-scrollbar-corner {
+  background: #000; 
+}
+  
 
