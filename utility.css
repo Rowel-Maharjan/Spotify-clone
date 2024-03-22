@@ -116,8 +116,40 @@
     font-weight: 700;
     color: rgb(255, 255, 255);
 }
+.f-4-light{
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(179, 179, 179);
+}
+
+.f-5{
+    font-size: 15px;
+    font-weight: 400;
+}
 
   
 
 
 
+::-webkit-scrollbar {
+    width: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #535353; 
+ 
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+
+::-webkit-scrollbar-corner {
+  background: #000; 
+}
+  
