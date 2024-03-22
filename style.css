@@ -244,8 +244,19 @@ body{
     width: 95%;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(77, 77, 77);;
-    cursor: pointer;
+    background-color: rgb(77, 77, 77);
+    position: relative;
+    height: 3px;
+}
+
+.circle{
+    height: 11px;
+    background-color: white;
+    width: 11px;
+    border-radius: 50%;
+    position: absolute;
+    left: -3px;
+    transition: left 0.5s;
 }
 
 #playSong{
