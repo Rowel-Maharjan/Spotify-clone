@@ -231,10 +231,21 @@ body{
     align-items: center;
 }
 
-.songButton{
-    background-color: rgb(55, 80, 80);
+.audioinfo{
     width: 38%;
     justify-content: center;
+    align-items: center;
+    gap: 13px;
+}
+
+
+.seekbar{
+    border-radius: 3px;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(77, 77, 77);;
+    cursor: pointer;
 }
 
 #playSong{
@@ -244,10 +255,17 @@ body{
     padding: 10px;
 }
 
+.songButton{
+    justify-content: center;
+    align-items: center;
+}
+
 .songButton img{
     margin: 0px 12px;
     width: 12px;
+    cursor: pointer;
 }
+
 
 .songList{
     overflow: auto;
@@ -262,7 +280,7 @@ body{
     padding: 6.5px;
     list-style: none;
     gap: 10px;
-    margin: 4px 0px;
+    margin-bottom: 4px;
     border-radius: 5px;
     cursor: pointer;
 }
