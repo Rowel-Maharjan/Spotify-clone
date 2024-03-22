@@ -24,7 +24,7 @@ async function getSongs() {
 
 const playMusic = (track)=>{
     currentSong.src = track;
-    // currentSong.play();
+    currentSong.play();
 }
 
 async function main() {
@@ -34,17 +34,20 @@ async function main() {
     // Show all songs in the playlist
     let SongUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
     for (const song of songs.songsName) {
-        SongUl.insertAdjacentHTML("afterbegin", `<li class = "flex">
+        let parts = song.split("-")
+        let songName = parts[0];
+        let ArtistName = parts[1];
+        SongUl.insertAdjacentHTML("beforeend", `<li class = "flex">
         <img src="/images/music.svg" alt="">
         <div class="music-info flex-c">
-            <div class="songName f-5">${song}</div>
-            <div class="songArtist f-2-light">Rowel Maharjan</div>
+            <div class="songName f-5">${songName}</div>
+            <div class="songArtist f-2-light">${ArtistName}</div>
         </div></li>`)
     }
 
-    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e=>{
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e,index)=>{
         e.addEventListener("click",element=>{
-            playMusic(songs.songs[1])
+            playMusic(songs.songs[index])
         });
     });
 }
