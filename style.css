@@ -226,27 +226,41 @@ body{
 }
 
 .playbar{
-    padding: 0px 12px;
+    padding: 4px 18px;
     justify-content: space-between;
     align-items: center;
 }
 
 .audioinfo{
-    width: 38%;
+    /* background-color: green; */
+    width: 40%;
     justify-content: center;
     align-items: center;
-    gap: 13px;
+    gap: 3px;
 }
 
+.status{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
 .seekbar{
     border-radius: 3px;
-    width: 95%;
+    width: 100%;
     justify-content: center;
     align-items: center;
     background-color: rgb(77, 77, 77);
     position: relative;
     height: 3px;
+}
+
+.forheight{
+    height : 4px;
+    padding: 3px 0px;
+    width: 100%;
+    cursor: pointer;
 }
 
 .circle{
@@ -255,15 +269,20 @@ body{
     width: 11px;
     border-radius: 50%;
     position: absolute;
-    left: -3px;
+    left: 0%;
     transition: left 0.5s;
 }
+
 
 #playSong{
     background-color: white;
     width: 14px;
     border-radius: 30px;
     padding: 10px;
+}
+
+#playSong:hover{
+    transform: scale(1.05,1.05);
 }
 
 .songButton{
@@ -275,10 +294,12 @@ body{
     margin: 0px 12px;
     width: 12px;
     cursor: pointer;
+    padding: 3px;
 }
 
 
 .songList{
+    height: 280px;
     overflow: auto;
 }
 
@@ -312,6 +333,23 @@ body{
     border-radius: 3px;
 }
 
+.songinfo{
+    /* background-color: red; */
+    width: 15%;
+    gap: 10px;
+}
+
+.songinfo img{
+    width: 22px;
+    background-color: rgb(40,40,40);
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.songVolume{
+    width: 15%;
+    /* background-color: blue; */
+}
 
 
 
