@@ -1,0 +1,94 @@
+.left{
+    width: 99vw;
+}
+
+.playbar{
+    margin-top: 10px;
+    position: relative;
+}
+
+.container{
+    padding: 0px;
+}
+
+.songButton img{
+    z-index: 10;
+    width: 12px;
+    margin: 0px 8px 4px 8px;
+}
+
+#playSong{
+    padding: 3px;
+}
+
+.audioinfo{
+    width: 100%;
+}
+
+.songinfo{
+    position: absolute;
+    top: -8px;
+    left: 19px;
+    width: 50vw;
+}
+
+.songinfo img{
+    display: none;
+}
+
+.songVolume{
+    position: absolute;
+    top: -8px;
+    right: 18px;
+    width: 50vw;
+    text-align: end;
+}
+
+.cardContainer{
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.pointer{
+    display: none;
+}
+
+.card{
+    width: 85vw;
+}
+
+.f-1{
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+}
+
+.f-2-light{
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(179, 179, 179);
+    
+}
+
+.f-4{
+    font-size: 27px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    padding-left: 12px;
+}
+.left{
+    height: 87vh;
+}
+
+.right{
+    height: 87vh;
+    margin-bottom: 18px;
+}
+
+.p-2{
+    padding: 19px 9px;
+}
+
+::-webkit-scrollbar {
+    width: 1px;
+}
