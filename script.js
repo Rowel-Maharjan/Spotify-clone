@@ -70,6 +70,7 @@ async function main() {
             <div class="songArtist f-2-light">${ArtistName}</div>
         </div></li>`)
     }
+    document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
 
     // Attach event listener to each songs 
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e,index)=>{
@@ -132,10 +133,6 @@ async function main() {
         document.querySelector(".circle").style.height = "";
         document.querySelector(".color").style.backgroundColor = "";
     })
-    
-    
-
-
 }
 
 main();
