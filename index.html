@@ -7,6 +7,9 @@
     <title>Spotify - Web Player: Music for everyone</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
+    <link rel="stylesheet" href="phone.css" media="screen and (max-width: 1000px)">
+    <link rel="stylesheet" href="phones.css" media="screen and (max-width: 550px)">
+
 
 </head>
 
@@ -14,7 +17,14 @@
     <div class="container flex">
         <div class="left">
             <div class="home bg-gray p-1 rounded">
-                <div class="logo"><img src="/images/logo.svg" alt="Logo"></div>
+                <div class="closeHamburger flex">
+                    <div class="logo">
+                        <img src="/images/logo.svg" alt="Logo">
+                    </div>
+                    <div class="cancel">
+                        <img src="/images/cancel.svg" alt="">
+                    </div>
+                </div>
                 <ul class="f-1-light">
                     <li class="small-logo"><img src="/images/home.svg" alt="Home">Home</li>
                     <li class="small-logo"><img src="/images/search.svg" alt="Search">Search</li>
@@ -52,7 +62,7 @@
                     </div>
                 </div> -->
 
-                <div class="footer flex-c p-1 f-3">
+                <!-- <div class="footer flex-c p-1 f-3">
                     <div class="foot flex">
                         <a href="#">Legal</a>
                         <a href="#">Safety & Privacy Center</a>
@@ -64,17 +74,20 @@
                     <div class="below">
                         <a href="#">Cookies</a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
         <div class="right bg-black1">
             <div class="header flex rounded">
                 <div class="nav flex">
-                    <button>
+                    <button class="hamburger">
+                        <img src="/images/hamburger.svg" alt="">
+                    </button>
+                    <button class = "remove">
                         <img src="/images/left-arrow.svg" alt="">
                     </button>
-                    <button>
+                    <button class = "remove">
                         <img src="/images/right-arrow.svg" alt="">
                     </button>
                 </div>
@@ -96,6 +109,15 @@
                             <img src="/images/playbutton.svg" alt="">
                         </div>
                         <img class="rounded-1" src="/images/playlist-1.jpg" alt="">
+                        <div class="f-1">Mega Hit Mix</div>
+                        <div class="f-2-light">A mega mix of 75 favorites from the last few years! </div>
+                    </div>
+
+                    <div class="card rounded flex-c">
+                        <div class="play">
+                            <img src="/images/playbutton.svg" alt="">
+                        </div>
+                        <img class="rounded-1" src="/images/playlist-2.jpg" alt="">
                         <div class="f-1">Mega Hit Mix</div>
                         <div class="f-2-light">A mega mix of 75 favorites from the last few years! </div>
                     </div>

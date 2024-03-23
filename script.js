@@ -35,9 +35,9 @@ async function getSongs() {
     return { songsName: songsName, songs: songs };
 }
 
-const playMusic = (track,name,pause = false)=>{
+const playMusic = (track, name, pause = false) => {
     currentSong.src = track;
-    if(!pause){
+    if (!pause) {
         currentSong.play();
     }
 
@@ -46,7 +46,7 @@ const playMusic = (track,name,pause = false)=>{
     let ArtistName = parts[1];
 
     document.querySelector(".songinfo").innerHTML = `<img src="/images/music.svg" alt="">
-    <div class="music-info flex-c">
+    <div class="music-info">
         <div class="songName f-5">${songName}</div>
         <div class="songArtist f-2-light">${ArtistName}</div>
     </div>`
@@ -55,8 +55,8 @@ const playMusic = (track,name,pause = false)=>{
 async function main() {
     // Get the list of all Songs 
     let songs = await getSongs();
-    playMusic(songs.songs[0],songs.songsName[0],true);
-    
+    playMusic(songs.songs[0], songs.songsName[0], true);
+
     // Show all songs in the playlist
     let SongUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
     for (const song of songs.songsName) {
@@ -73,49 +73,49 @@ async function main() {
     document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
 
     // Attach event listener to each songs 
-    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e,index)=>{
-        e.addEventListener("click",element=>{
-            Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item=>{
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e, index) => {
+        e.addEventListener("click", element => {
+            Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
                 item.style.backgroundColor = "";
             })
             e.style.backgroundColor = "black";
-            play.src = "/images/pause.svg"; 
+            play.src = "/images/pause.svg";
             playMusic(songs.songs[index], songs.songsName[index])
         });
     });
 
     // Attach event listener to play, next and Previous
     let play = document.getElementById("playSong");
-    play.addEventListener("click",(element)=>{
-        if (currentSong.paused){
+    play.addEventListener("click", (element) => {
+        if (currentSong.paused) {
             currentSong.play();
             play.src = "/images/pause.svg"
         }
 
-        else{
+        else {
             currentSong.pause();
             play.src = "/images/playbutton.svg"
         }
 
     })
     // Listen for timeupdate event 
-    currentSong.addEventListener("timeupdate",()=>{
-        document.querySelector(".passedTime").innerHTML= secondsToTime(currentSong.currentTime);
-        document.querySelector(".totalDuration").innerHTML= secondsToTime(currentSong.duration);
+    currentSong.addEventListener("timeupdate", () => {
+        document.querySelector(".passedTime").innerHTML = secondsToTime(currentSong.currentTime);
+        document.querySelector(".totalDuration").innerHTML = secondsToTime(currentSong.duration);
 
-        document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration)*98 + "%";
+        document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 99 + "%";
 
-        document.querySelector(".color").style.width = (currentSong.currentTime/currentSong.duration)*98 + "%";
-        
-        if(document.querySelector(".circle").style.left == "98%")
+        document.querySelector(".color").style.width = (currentSong.currentTime / currentSong.duration) * 100 + "%";
+
+        if (document.querySelector(".circle").style.left == "99%")
             play.src = "/images/playbutton.svg"
     })
 
     // Event Listener to seekbar
     document.querySelector(".forheight").addEventListener("click", e => {
         const forheight = document.querySelector(".forheight");
-        if (!e.target.classList.contains('circle')){
-            
+        if (!e.target.classList.contains('circle')) {
+
             // Calculate the percentage based on the width of .forheight
             let percent = (e.offsetX / forheight.getBoundingClientRect().width) * 98;
             document.querySelector(".circle").style.left = percent + "%";
@@ -124,14 +124,23 @@ async function main() {
     });
 
     //Hover effect
-    document.querySelector(".forheight").addEventListener("mouseenter",()=>{
+    document.querySelector(".forheight").addEventListener("mouseenter", () => {
         document.querySelector(".circle").style.height = "11px";
         document.querySelector(".color").style.backgroundColor = "green";
     })
 
-    document.querySelector(".forheight").addEventListener("mouseleave",()=>{
+    document.querySelector(".forheight").addEventListener("mouseleave", () => {
         document.querySelector(".circle").style.height = "";
         document.querySelector(".color").style.backgroundColor = "";
+    })
+
+    //Hamburger effect
+    document.querySelector(".nav").addEventListener("click",()=>{
+        document.querySelector(".left").style.left = "1%";
+    })   
+
+    document.querySelector(".cancel").addEventListener("click",()=>{
+        document.querySelector(".left").style.left = "-100%";
     })
 }
 

@@ -1,70 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.border{
+.border {
     border: 2px solid red;
     margin: 3px;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-.flex-c{
+.flex-c {
     display: flex;
     flex-direction: column;
 }
 
-.grid{
+.grid {
     display: grid;
 }
 
-.justify-center{
+.justify-center {
     justify-content: center;
 }
 
-.items-center{
+.items-center {
     align-items: center;
 }
 
-.bg-gray{
+.bg-gray {
     background-color: rgb(18, 18, 18);
 }
 
-.bg-black{
+.bg-black {
     background-color: rgb(36, 36, 36);
 }
 
-.bg-black1{
-    background-color: rgb(16,16,16);
+.bg-black1 {
+    background-color: rgb(16, 16, 16);
 }
 
-.small-logo img{
+.small-logo img {
     width: 20px;
 }
 
-.p-1{
+.p-1 {
     padding: 13px 17px;
 }
 
-.p-2{
+.p-2 {
     padding: 10px 15px;
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
 }
-.pointer:hover{
+
+.pointer:hover {
     text-decoration: underline;
 }
 
-.rounded{
+.rounded {
     border-radius: 8px;
 }
 
-.rounded-1{
+.rounded-1 {
     border-radius: 4px;
 }
-.left-button{
+
+.left-button {
     border-radius: 10px;
     padding: 4px 10px;
     color: black;
@@ -73,83 +75,84 @@
     border: none;
     cursor: pointer;
 }
-.left-button:hover{
-    transform: scale(1.03,1.01);
+
+.left-button:hover {
+    transform: scale(1.03, 1.01);
     font-weight: 700;
 }
 
-.icon-width img{
+.icon-width img {
     width: 12px;
 }
 
-.f-1{
+.f-1 {
     font-size: 12px;
     font-weight: 700;
     color: rgb(255, 255, 255);
 }
 
-.f-1-light{
+.f-1-light {
     font-size: 12px;
     font-weight: 700;
     color: rgb(179, 179, 179);
 }
 
-.f-2{
+.f-2 {
     font-size: 10px;
     font-weight: 400;
     color: rgb(255, 255, 255);
 }
 
-.f-2-light{
+.f-2-light {
     font-size: 10px;
     font-weight: 400;
     color: rgb(179, 179, 179);
 }
 
-.f-3{
+.f-3 {
     font-size: 8px;
     font-weight: 400;
 }
 
-.f-4{
+.f-4 {
     font-size: 20px;
     font-weight: 700;
     color: rgb(255, 255, 255);
 }
-.f-4-light{
+
+.f-4-light {
     font-size: 20px;
     font-weight: 700;
     color: rgb(179, 179, 179);
 }
 
-.f-5{
+.f-5 {
     font-size: 16px;
     font-weight: 400;
 }
 
-  
+
 
 
 
 ::-webkit-scrollbar {
-    width: 10px; 
+    width: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+    background: #555;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #535353; 
- 
+    background: #535353;
+
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; 
+    background: transparent;
 }
 
 
 ::-webkit-scrollbar-corner {
-  background: #000; 
+    background: #000;
 }
-  
