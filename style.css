@@ -259,7 +259,16 @@ body{
     align-items: center;
     background-color: rgb(77, 77, 77);
     position: relative;
-    height: 3px;
+    height: 4px;
+}
+
+.color{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .forheight{
@@ -270,7 +279,6 @@ body{
 }
 
 .circle{
-    height: 11px;
     background-color: white;
     width: 11px;
     border-radius: 50%;

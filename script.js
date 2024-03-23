@@ -74,6 +74,10 @@ async function main() {
     // Attach event listener to each songs 
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e,index)=>{
         e.addEventListener("click",element=>{
+            Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item=>{
+                item.style.backgroundColor = "";
+            })
+            e.style.backgroundColor = "black";
             play.src = "/images/pause.svg"; 
             playMusic(songs.songs[index], songs.songsName[index])
         });
@@ -100,20 +104,36 @@ async function main() {
 
         document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration)*98 + "%";
 
+        document.querySelector(".color").style.width = (currentSong.currentTime/currentSong.duration)*98 + "%";
+        
         if(document.querySelector(".circle").style.left == "98%")
             play.src = "/images/playbutton.svg"
     })
 
     // Event Listener to seekbar
-    document.querySelector(".forheight").addEventListener("click",e=>{
-        if (e.target == e.currentTarget || e.target.classList.contains('seekbar')){
-            console.log(e.offsetX)
-            console.log(e.target.getBoundingClientRect().width)
-            let percent = (e.offsetX/e.target.getBoundingClientRect().width)*98;
+    document.querySelector(".forheight").addEventListener("click", e => {
+        const forheight = document.querySelector(".forheight");
+        if (!e.target.classList.contains('circle')){
+            
+            // Calculate the percentage based on the width of .forheight
+            let percent = (e.offsetX / forheight.getBoundingClientRect().width) * 98;
             document.querySelector(".circle").style.left = percent + "%";
-            currentSong.currentTime = (percent * currentSong.duration)/98;
+            currentSong.currentTime = (percent * currentSong.duration) / 98;
         }
+    });
+
+    //Hover effect
+    document.querySelector(".forheight").addEventListener("mouseenter",()=>{
+        document.querySelector(".circle").style.height = "11px";
+        document.querySelector(".color").style.backgroundColor = "green";
     })
+
+    document.querySelector(".forheight").addEventListener("mouseleave",()=>{
+        document.querySelector(".circle").style.height = "";
+        document.querySelector(".color").style.backgroundColor = "";
+    })
+    
+    
 
 
 }
