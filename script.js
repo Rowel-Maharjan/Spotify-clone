@@ -41,14 +41,6 @@ const playMusic = (track,name,pause = false)=>{
         currentSong.play();
     }
 
-    // Listen for timeupdate event 
-    currentSong.addEventListener("timeupdate",()=>{
-        document.querySelector(".passedTime").innerHTML= secondsToTime(currentSong.currentTime);
-        document.querySelector(".totalDuration").innerHTML= secondsToTime(currentSong.duration);
-
-        document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration)*98 + "%";
-    })
-
     let parts = name.split("-")
     let songName = parts[0];
     let ArtistName = parts[1];
@@ -101,10 +93,24 @@ async function main() {
         }
 
     })
+    // Listen for timeupdate event 
+    currentSong.addEventListener("timeupdate",()=>{
+        document.querySelector(".passedTime").innerHTML= secondsToTime(currentSong.currentTime);
+        document.querySelector(".totalDuration").innerHTML= secondsToTime(currentSong.duration);
 
-    document.querySelector(".forheight").addEventListener("click",e=>{
-        
+        document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration)*98 + "%";
+
+        // if(document.querySelector(".circle").style.left == "98%")
+        //     play.src = "/images/playbutton.svg"
     })
+
+    // Event Listener to seekbar
+    document.querySelector(".forheight").addEventListener("click",e=>{
+        let percent = (e.offsetX/e.target.getBoundingClientRect().width)*98;
+        document.querySelector(".circle").style.left = percent + "%";
+        currentSong.currentTime = (percent * currentSong.duration)/98;
+    })
+
 }
 
 main();

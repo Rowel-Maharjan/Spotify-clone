@@ -19,11 +19,16 @@ body{
     display: flex;
     flex-direction: column;
     gap: 6px;
-    max-height: calc(88vh + 4px);
+    /* max-height: calc(88vh + 4px); */
+    height: 86vh;
 }
 
 .logo img{
-    width: 60px;
+    width: 80px;
+}
+
+.home{
+    height: 100px;
 }
 
 .home ul li{
@@ -41,7 +46,7 @@ body{
 
 .library{
     position: relative;
-    min-height: 67vh;
+    height: calc(85vh - 100px) ;
 }
 
 .lib{
@@ -124,7 +129,8 @@ body{
 .right{
     width: 100vw;
     border-radius: 8px;
-    max-height: calc(86vh + 4px);
+    /* max-height: calc(86vh + 4px); */
+    height: 86vh;
     overflow: auto;
 }
 
@@ -270,7 +276,7 @@ body{
     border-radius: 50%;
     position: absolute;
     left: 0%;
-    transition: left 0.5s;
+    transition: left 0.1s linear;
 }
 
 
@@ -299,7 +305,7 @@ body{
 
 
 .songList{
-    height: 280px;
+    height: calc(85vh - 100px - 27vh);
     overflow: auto;
 }
 
