@@ -100,16 +100,21 @@ async function main() {
 
         document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration)*98 + "%";
 
-        // if(document.querySelector(".circle").style.left == "98%")
-        //     play.src = "/images/playbutton.svg"
+        if(document.querySelector(".circle").style.left == "98%")
+            play.src = "/images/playbutton.svg"
     })
 
     // Event Listener to seekbar
     document.querySelector(".forheight").addEventListener("click",e=>{
-        let percent = (e.offsetX/e.target.getBoundingClientRect().width)*98;
-        document.querySelector(".circle").style.left = percent + "%";
-        currentSong.currentTime = (percent * currentSong.duration)/98;
+        if (e.target == e.currentTarget || e.target.classList.contains('seekbar')){
+            console.log(e.offsetX)
+            console.log(e.target.getBoundingClientRect().width)
+            let percent = (e.offsetX/e.target.getBoundingClientRect().width)*98;
+            document.querySelector(".circle").style.left = percent + "%";
+            currentSong.currentTime = (percent * currentSong.duration)/98;
+        }
     })
+
 
 }
 
