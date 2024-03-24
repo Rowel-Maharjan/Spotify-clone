@@ -1,4 +1,3 @@
-
 let currentSong = new Audio;
 
 function secondsToTime(seconds) {
@@ -15,7 +14,8 @@ function secondsToTime(seconds) {
 }
 
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:5500/songs/")
+    // let a = await fetch("http://127.0.0.1:5500/songs/")
+    let a = await fetch("http://192.168.1.101:3000/songs/")
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -27,7 +27,8 @@ async function getSongs() {
         if (Object.hasOwnProperty.call(as, key)) {
             const element = as[key];
             if (element.href.endsWith(".mp3") || element.href.endsWith(".m4a")) {
-                songsName.push(element.title.slice(0, -4));
+                // songsName.push(element.title.slice(0, -4));
+                songsName.push(element.innerText.slice(0,-4))
                 songs.push(element.href)
             }
         }
