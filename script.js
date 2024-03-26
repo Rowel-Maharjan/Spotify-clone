@@ -1,8 +1,10 @@
 let currentSong = new Audio;
 let play = document.getElementById("playSong");
 let shuffle = document.getElementById("shuffle")
+let repeat = document.getElementById("repeat");
 let index
 let isShuffle = false;
+let isrepeat = false;
 let previousNumber = []
 
 
@@ -146,11 +148,14 @@ async function main() {
 
         //To play next song when current Time completes
         if (currentSong.currentTime == currentSong.duration) {
-            if (isShuffle) {
+            index = songs.song.indexOf(currentSong.src)
+            if (isrepeat) {
+                playMusic(songs.song[index], songs.songsName[index])
+            }
+            else if (isShuffle) {
                 shuffling();
             }
             else {
-                index = songs.song.indexOf(currentSong.src)
                 changecolor(index + 1);
                 if (index + 1 < songs.song.length) {
                     playMusic(songs.song[index + 1], songs.songsName[index + 1]);
@@ -163,17 +168,6 @@ async function main() {
         }
     })
 
-    
-    document.getElementById("shuffle").addEventListener("click", () => {
-        if (isShuffle) {
-            shuffle.src = "/images/shuffle.svg";
-            isShuffle = false;
-        }
-        else {
-            isShuffle = true;
-            shuffle.src = "/images/shuffleafter.svg";
-        }
-    })
 
     // Event Listener to seekbar
     document.querySelector(".forheight").addEventListener("click", e => {
@@ -233,6 +227,28 @@ async function main() {
             if (index - 1 > -1) {
                 playMusic(songs.song[index - 1], songs.songsName[index - 1]);
             }
+        }
+    })
+
+    document.getElementById("shuffle").addEventListener("click", () => {
+        if (isShuffle) {
+            shuffle.src = "/images/shuffle.svg";
+            isShuffle = false;
+        }
+        else {
+            isShuffle = true;
+            shuffle.src = "/images/shuffleafter.svg";
+        }
+    })
+
+    document.getElementById("repeat").addEventListener("click",()=>{
+        if (isrepeat) {
+            repeat.src = "/images/repeat.svg";
+            isrepeat = false;
+        }
+        else {
+            isrepeat = true;
+            repeat.src = "/images/repeatclick.svg";
         }
     })
 
