@@ -23,8 +23,8 @@ function secondsToTime(seconds) {
 
 //Get songs
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:5500/songs/")
-    // let a = await fetch("http://192.168.1.101:3000/songs/")
+    // let a = await fetch("http://127.0.0.1:5500/songs/")
+    let a = await fetch("http://192.168.1.101:3000/songs/")
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -36,8 +36,8 @@ async function getSongs() {
         if (Object.hasOwnProperty.call(as, key)) {
             const element = as[key];
             if (element.href.endsWith(".mp3") || element.href.endsWith(".m4a")) {
-                songsName.push(element.title.slice(0, -4));
-                // songsName.push(element.innerText.slice(0,-4))
+                // songsName.push(element.title.slice(0, -4));
+                songsName.push(element.innerText.slice(0,-4))
                 songs.push(element.href)
             }
         }
@@ -58,7 +58,7 @@ const playMusic = (track, name, pause = false) => {
     let ArtistName = parts[1];
 
     document.querySelector(".songinfo").innerHTML = `<img src="/images/music.svg" alt="">
-    <div class="music-info">
+    <div class="music-infos">
         <div class="songName f-5">${songName}</div>
         <div class="songArtist f-2-light">${ArtistName}</div>
     </div>`
