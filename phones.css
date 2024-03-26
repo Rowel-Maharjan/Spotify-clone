@@ -1,5 +1,5 @@
 .playbar{
-    margin-top: 10px;
+    padding: 0px 18px;
     position: relative;
 }
 
@@ -19,13 +19,20 @@
 
 .audioinfo{
     width: 100%;
+    gap: 5px;
+}
+
+.playbar{
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .songinfo{
-    position: absolute;
-    top: -3vh;
-    left: 33vw;
-    width: 55vw;
+    justify-content: center;
+    width: 100%;
 }
 
 .music-infos{
@@ -84,12 +91,12 @@
 }
 .left{
     width: 99vw;
-    height: 81vh;
+    height: 80vh;
 }
 
 .right{
-    height: 81vh;
-    margin-bottom: 18px;
+    height: 80vh;
+    margin-bottom: 10px;
 }
 
 .p-2{

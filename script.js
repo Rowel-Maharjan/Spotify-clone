@@ -9,6 +9,10 @@ let previousNumber = []
 
 
 function secondsToTime(seconds) {
+
+    if (isNaN(seconds) || (seconds) < 0){
+        return "00:00";
+    }
     // Calculate minutes and remaining seconds
     var minutes = Math.floor(seconds / 60);
     var remainingSeconds = Math.floor(seconds % 60);
