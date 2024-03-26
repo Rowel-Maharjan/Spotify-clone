@@ -46,7 +46,6 @@ async function getSongs() {
 //To play songs that is in the track
 const playMusic = (track, name, pause = false) => {
     currentSong.src = track;
-
     if (!pause) {
         currentSong.play();
         play.src = "/images/pause.svg"
@@ -118,6 +117,24 @@ async function main() {
 
     })
 
+    function shuffling() {
+        index = songs.song.indexOf(currentSong.src)
+        previousNumber.push(index)
+        if (previousNumber.length == songs.song.length) {
+            previousNumber = []
+        }
+        getRandomNumber = () => {
+            let randomNumber
+            do {
+                randomNumber = Math.floor(Math.random() * songs.song.length)
+            } while (previousNumber.includes(randomNumber));
+            return randomNumber;
+        }
+        let indexx = getRandomNumber();
+        changecolor(indexx);
+        playMusic(songs.song[indexx], songs.songsName[indexx]);
+    }
+
     // Listen for timeupdate event 
     currentSong.addEventListener("timeupdate", () => {
         document.querySelector(".passedTime").innerHTML = secondsToTime(currentSong.currentTime);
@@ -127,30 +144,14 @@ async function main() {
 
         document.querySelector(".color").style.width = (currentSong.currentTime / currentSong.duration) * 100 + "%";
 
-        
         //To play next song when current Time completes
         if (currentSong.currentTime == currentSong.duration) {
-            if(isShuffle){
-                index = songs.song.indexOf(currentSong.src)
-                previousNumber.push(index)
-                if(previousNumber.length == songs.song.length){
-                    previousNumber = []
-                }
-                getRandomNumber = ()=>{
-                    let randomNumber
-                    do{
-                        randomNumber = Math.floor(Math.random()*songs.song.length) 
-                    }while(previousNumber.includes(randomNumber));
-                    return randomNumber;
-                }
-                
-                index = getRandomNumber();
-                changecolor(index);
-                playMusic(songs.song[index], songs.songsName[index]);
+            if (isShuffle) {
+                shuffling();
             }
-            else{
+            else {
                 index = songs.song.indexOf(currentSong.src)
-                changecolor(index+1);
+                changecolor(index + 1);
                 if (index + 1 < songs.song.length) {
                     playMusic(songs.song[index + 1], songs.songsName[index + 1]);
                 }
@@ -162,12 +163,13 @@ async function main() {
         }
     })
 
-    document.getElementById("shuffle").addEventListener("click",()=>{
-        if(isShuffle){
+    
+    document.getElementById("shuffle").addEventListener("click", () => {
+        if (isShuffle) {
             shuffle.src = "/images/shuffle.svg";
             isShuffle = false;
         }
-        else{
+        else {
             isShuffle = true;
             shuffle.src = "/images/shuffleafter.svg";
         }
@@ -207,20 +209,30 @@ async function main() {
 
     //For next songs
     next.addEventListener("click", () => {
-        index = songs.song.indexOf(currentSong.src)
-        changecolor(index+1);
-        if (index + 1 < songs.song.length) {
-            play.src = "/images/pause.svg"
-            playMusic(songs.song[index + 1], songs.songsName[index + 1]);
+        if (isShuffle) {
+            shuffling();
+        }
+        else {
+            index = songs.song.indexOf(currentSong.src)
+            changecolor(index + 1);
+            if (index + 1 < songs.song.length) {
+                play.src = "/images/pause.svg"
+                playMusic(songs.song[index + 1], songs.songsName[index + 1]);
+            }
         }
     })
 
     //For previous songs
     previous.addEventListener("click", () => {
-        index = songs.song.indexOf(currentSong.src)
-        changecolor(index-1);
-        if (index - 1 > -1) {
-            playMusic(songs.song[index - 1], songs.songsName[index - 1]);
+        if (isShuffle) {
+            shuffling();
+        }
+        else {
+            index = songs.song.indexOf(currentSong.src)
+            changecolor(index - 1);
+            if (index - 1 > -1) {
+                playMusic(songs.song[index - 1], songs.songsName[index - 1]);
+            }
         }
     })
 
