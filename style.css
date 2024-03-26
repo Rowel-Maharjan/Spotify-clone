@@ -378,7 +378,48 @@ body {
 }
 
 .songVolume {
-    width: 15%;
-    text-align: end;
-    /* background-color: blue; */
+    width: 12%;
+    justify-content: end;
+    align-items: center;
+    gap: 3px;
+}
+
+
+.songVolume img{
+    width: 22px;
+}
+
+.seekbarz{
+    border-radius: 3px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(77, 77, 77);
+    position: relative;
+    height: 4px;
+}
+
+.circles{
+    background-color: white;
+    width: 11px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0%;
+    transition: left 0.1s linear;
+}
+
+.colors {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.forheights {
+    height: 4px;
+    padding: 3px 0px;
+    width: 100%;
+    cursor: pointer;
 }

@@ -1,16 +1,16 @@
 let currentSong = new Audio;
 let play = document.getElementById("playSong");
-let shuffle = document.getElementById("shuffle")
+let shuffle = document.getElementById("shuffle");
 let repeat = document.getElementById("repeat");
-let index
+let index;
 let isShuffle = false;
 let isrepeat = false;
-let previousNumber = []
+let previousNumber = [];
+let volume = document.getElementById("Volume")
 
 
 function secondsToTime(seconds) {
-
-    if (isNaN(seconds) || (seconds) < 0){
+    if (isNaN(seconds) || (seconds) < 0) {
         return "00:00";
     }
     // Calculate minutes and remaining seconds
@@ -41,7 +41,7 @@ async function getSongs() {
             const element = as[key];
             if (element.href.endsWith(".mp3") || element.href.endsWith(".m4a")) {
                 // songsName.push(element.title.slice(0, -4));
-                songsName.push(element.innerText.slice(0,-4))
+                songsName.push(element.innerText.slice(0, -4))
                 songs.push(element.href)
             }
         }
@@ -109,7 +109,7 @@ async function main() {
         })
     });
 
-    // Attach event listener to play, next and Previous
+    // Attach event listener to play
     play.addEventListener("click", (element) => {
         if (currentSong.paused) {
             currentSong.play();
@@ -234,6 +234,8 @@ async function main() {
         }
     })
 
+
+    //For shuffle
     document.getElementById("shuffle").addEventListener("click", () => {
         if (isShuffle) {
             shuffle.src = "/images/shuffle.svg";
@@ -245,7 +247,8 @@ async function main() {
         }
     })
 
-    document.getElementById("repeat").addEventListener("click",()=>{
+    //For repeat
+    document.getElementById("repeat").addEventListener("click", () => {
         if (isrepeat) {
             repeat.src = "/images/repeat.svg";
             isrepeat = false;
@@ -254,6 +257,88 @@ async function main() {
             isrepeat = true;
             repeat.src = "/images/repeatclick.svg";
         }
+    })
+
+    //For spacebar
+    document.addEventListener("keydown", (e) => {
+        if (e.key == " ") {
+            if (currentSong.paused) {
+                currentSong.play();
+                play.src = "/images/pause.svg"
+
+            }
+            else {
+                currentSong.pause();
+                play.src = "/images/playbutton.svg"
+            }
+        }
+    })
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key == "ArrowRight") {
+            currentSong.currentTime += 10;
+        }
+    })
+    document.addEventListener("keydown", (e) => {
+        if (e.key == "ArrowLeft") {
+            currentSong.currentTime -= 10;
+        }
+    })
+    document.addEventListener("keydown", (e) => {
+        if (currentSong.volume > 0.05) {
+            if (e.key == "ArrowDown") {
+                currentSong.volume -= 0.1;
+            }
+        }
+    })
+    document.addEventListener("keydown", (e) => {
+        if (currentSong.volume < 0.99) {
+            if (e.key == "ArrowUp") {
+                currentSong.volume += 0.1;
+            }
+        }
+    })
+
+
+    // For Volume 
+    currentSong.volume = 0.4;
+
+    document.querySelector(".forheights").addEventListener("click", e => {
+        const forheights = document.querySelector(".forheights");
+        if (!e.target.classList.contains('circles')) {
+            
+            // Calculate the percentage based on the width of .forheight
+            let percent = (e.offsetX / forheights.getBoundingClientRect().width) * 98;
+            document.querySelector(".circles").style.left = percent + "%";
+            document.querySelector(".colors").style.width = percent + "%";
+            currentSong.volume = percent/98;
+            
+        }
+    });
+    currentSong.addEventListener("volumechange",()=>{
+        if(currentSong.volume < 0.05){
+            volume.src = "/images/mute.svg"
+        }
+        else if(currentSong.volume < 0.6){
+            volume.src = "images/volume_low.svg"
+        }
+        else{
+            volume.src = "images/volume_high.svg"
+        }
+        document.querySelector(".circles").style.left = (currentSong.volume) * 99 + "%";
+        
+        document.querySelector(".colors").style.width = (currentSong.volume) * 100 + "%";
+    })
+    
+    //Hover effect
+    document.querySelector(".forheights").addEventListener("mouseenter", () => {
+        document.querySelector(".circles").style.height = "11px";
+        document.querySelector(".colors").style.backgroundColor = "green";
+    })
+
+    document.querySelector(".forheights").addEventListener("mouseleave", () => {
+        document.querySelector(".circles").style.height = "";
+        document.querySelector(".colors").style.backgroundColor = "";
     })
 
 }
