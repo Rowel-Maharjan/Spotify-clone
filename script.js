@@ -1,6 +1,10 @@
 let currentSong = new Audio;
 let play = document.getElementById("playSong");
+let shuffle = document.getElementById("shuffle")
 let index
+let isShuffle = false;
+let previousNumber = []
+
 
 function secondsToTime(seconds) {
     // Calculate minutes and remaining seconds
@@ -78,15 +82,14 @@ async function main() {
         </div></li>`)
     }
     document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
-    
+
     //To change the color of playlist songs
-    function changecolor(change){
-        index = songs.song.indexOf(currentSong.src)
-        if (0 <= (index + change) && (index + change)< songs.song.length){
+    function changecolor(change) {
+        if (0 <= change && change < songs.song.length) {
             Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
                 item.style.backgroundColor = "";
             })
-            document.querySelector(".songList").getElementsByTagName("li")[index+change].style.backgroundColor = "black";
+            document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
         }
     }
 
@@ -124,15 +127,49 @@ async function main() {
 
         document.querySelector(".color").style.width = (currentSong.currentTime / currentSong.duration) * 100 + "%";
 
-        if(currentSong.currentTime == currentSong.duration){
-            changecolor(1);
-            if(index+1 < songs.song.length){
-                playMusic(songs.song[index + 1],songs.songsName[index+1]);
+        
+        //To play next song when current Time completes
+        if (currentSong.currentTime == currentSong.duration) {
+            if(isShuffle){
+                index = songs.song.indexOf(currentSong.src)
+                previousNumber.push(index)
+                if(previousNumber.length == songs.song.length){
+                    previousNumber = []
+                }
+                getRandomNumber = ()=>{
+                    let randomNumber
+                    do{
+                        randomNumber = Math.floor(Math.random()*songs.song.length) 
+                    }while(previousNumber.includes(randomNumber));
+                    return randomNumber;
+                }
+                
+                index = getRandomNumber();
+                changecolor(index);
+                playMusic(songs.song[index], songs.songsName[index]);
             }
-            if(index+1 == songs.song.length){
-                currentSong.pause();
-                play.src = "/images/playbutton.svg"
+            else{
+                index = songs.song.indexOf(currentSong.src)
+                changecolor(index+1);
+                if (index + 1 < songs.song.length) {
+                    playMusic(songs.song[index + 1], songs.songsName[index + 1]);
+                }
+                if (index + 1 == songs.song.length) {
+                    currentSong.pause();
+                    play.src = "/images/playbutton.svg"
+                }
             }
+        }
+    })
+
+    document.getElementById("shuffle").addEventListener("click",()=>{
+        if(isShuffle){
+            shuffle.src = "/images/shuffle.svg";
+            isShuffle = false;
+        }
+        else{
+            isShuffle = true;
+            shuffle.src = "/images/shuffleafter.svg";
         }
     })
 
@@ -169,19 +206,21 @@ async function main() {
     })
 
     //For next songs
-    next.addEventListener("click",()=>{
-        changecolor(1);
-        if(index+1 < songs.song.length){
+    next.addEventListener("click", () => {
+        index = songs.song.indexOf(currentSong.src)
+        changecolor(index+1);
+        if (index + 1 < songs.song.length) {
             play.src = "/images/pause.svg"
-            playMusic(songs.song[index + 1],songs.songsName[index+1]);
+            playMusic(songs.song[index + 1], songs.songsName[index + 1]);
         }
     })
 
     //For previous songs
-    previous.addEventListener("click",()=>{
-        changecolor(-1);
-        if(index-1 > -1){
-            playMusic(songs.song[index - 1],songs.songsName[index-1]);
+    previous.addEventListener("click", () => {
+        index = songs.song.indexOf(currentSong.src)
+        changecolor(index-1);
+        if (index - 1 > -1) {
+            playMusic(songs.song[index - 1], songs.songsName[index - 1]);
         }
     })
 
