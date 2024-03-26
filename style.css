@@ -254,7 +254,7 @@ body {
 
 .audioinfo {
     /* background-color: green; */
-    width: 60%;
+    width: 55%;
     justify-content: center;
     align-items: center;
     gap: 9px;
@@ -366,7 +366,7 @@ body {
 
 .songinfo {
     /* background-color: red; */
-    width: 22%;
+    width: 14%;
     gap: 10px;
 }
 
@@ -379,6 +379,7 @@ body {
 
 .songVolume {
     width: 12%;
+    /* background-color: red; */
     justify-content: end;
     align-items: center;
     gap: 3px;

@@ -306,30 +306,30 @@ async function main() {
     document.querySelector(".forheights").addEventListener("click", e => {
         const forheights = document.querySelector(".forheights");
         if (!e.target.classList.contains('circles')) {
-            
+
             // Calculate the percentage based on the width of .forheight
             let percent = (e.offsetX / forheights.getBoundingClientRect().width) * 98;
             document.querySelector(".circles").style.left = percent + "%";
             document.querySelector(".colors").style.width = percent + "%";
-            currentSong.volume = percent/98;
-            
+            currentSong.volume = percent / 98;
+
         }
     });
-    currentSong.addEventListener("volumechange",()=>{
-        if(currentSong.volume < 0.05){
+    currentSong.addEventListener("volumechange", () => {
+        if (currentSong.volume < 0.05) {
             volume.src = "/images/mute.svg"
         }
-        else if(currentSong.volume < 0.6){
+        else if (currentSong.volume < 0.6) {
             volume.src = "images/volume_low.svg"
         }
-        else{
+        else {
             volume.src = "images/volume_high.svg"
         }
         document.querySelector(".circles").style.left = (currentSong.volume) * 99 + "%";
-        
+
         document.querySelector(".colors").style.width = (currentSong.volume) * 100 + "%";
     })
-    
+
     //Hover effect
     document.querySelector(".forheights").addEventListener("mouseenter", () => {
         document.querySelector(".circles").style.height = "11px";

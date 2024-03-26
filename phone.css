@@ -1,4 +1,4 @@
-.left{
+.left {
     position: absolute;
     left: -100%;
     z-index: 10;
@@ -7,32 +7,32 @@
     transition: all 0.3s ease-in-out;
 }
 
-.hamburger{
+.hamburger {
     display: block;
 }
 
-.nav img{
+.nav img {
     width: 17px;
 }
 
-.nav button{
+.nav button {
     padding: 8px 13px;
 }
 
-.remove{
+.remove {
     display: none;
 }
 
-.cancel{
+.cancel {
     cursor: pointer;
     display: block;
 }
 
-.closeHamburger{
+.closeHamburger {
     justify-content: space-between;
     align-items: center;
 }
 
-.cancel img{
+.cancel img {
     width: 25px;
 }
