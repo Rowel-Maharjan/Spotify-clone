@@ -86,7 +86,7 @@ function loadPlaylist() {
             <div class="songArtist f-2-light">${ArtistName}</div>
         </div></li>`)
     }
-
+    
     // Attach event listener to each songs 
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e, index) => {
         e.addEventListener("click", element => {
@@ -137,13 +137,10 @@ async function displayAlbums() {
         item.addEventListener("click", async event => {
             songs = await getSongs(event.currentTarget.dataset.folder);
             loadPlaylist();
-            // playMusic(songs.song[0],songs.songsName[0],true)      
-            // play.src = "/images/playbutton.svg";
             const hamburgerButton = document.querySelector(".hamburger");
             if (hamburgerButton) {
                 hamburgerButton.click();
             }
-
         })
     })
 
@@ -154,6 +151,15 @@ async function displayAlbums() {
             loadPlaylist();
             document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
             playMusic(songs.song[0], songs.songsName[0])
+        })
+    })
+
+    document.querySelectorAll(".card").forEach(item=>{
+        item.addEventListener("click",e=>{
+            document.querySelectorAll(".card").forEach(item=>{
+                item.style.backgroundColor= "";
+            })
+            item.style.backgroundColor= "#232323";
         })
     })
 
@@ -432,5 +438,10 @@ async function main() {
             currentSong.volume = currentVolume;
         }
     })
+
+    // Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
+    //     item.style.backgroundColor = "";
+    // })
+    // document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
 }
 main();
