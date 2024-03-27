@@ -1,0 +1,38 @@
+.left {
+    position: absolute;
+    left: -100%;
+    z-index: 10;
+    background-color: black;
+    width: 260px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger {
+    display: block;
+}
+
+.nav img {
+    width: 17px;
+}
+
+.nav button {
+    padding: 8px 13px;
+}
+
+.remove {
+    display: none;
+}
+
+.cancel {
+    cursor: pointer;
+    display: block;
+}
+
+.closeHamburger {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cancel img {
+    width: 25px;
+}
