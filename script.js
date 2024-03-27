@@ -71,7 +71,7 @@ const playMusic = (track, name, pause = false) => {
     </div>`
 }
 
-function loadPlaylist(){
+function loadPlaylist() {
     //Load Playlist
     let SongUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
     SongUl.innerHTML = "";
@@ -99,14 +99,72 @@ function loadPlaylist(){
     });
 }
 
+async function displayAlbums() {
+    // let a = await fetch("http://127.0.0.1:5500/songs/")
+    let a = await fetch(`http://192.168.1.101:3000/songs/`)
+    let response = await a.text();
+    let div = document.createElement("div")
+    div.innerHTML = response;
+    let as = div.getElementsByTagName("a");
+
+    for (const key in as) {
+        if (Object.hasOwnProperty.call(as, key)) {
+            const element = as[key];
+            if (element.href.includes("/songs")) {
+                // let folder = element.title.slice(0, -1);
+                let folders = element.innerText.slice(0, -1);
+
+                //Get the metadata of the folder
+                let a = await fetch(`http://192.168.1.101:3000/songs/${folders}/info.json`)
+                let response = await a.json();
+
+                let cards = document.querySelector(".cardContainer")
+                cards.insertAdjacentHTML("beforeend",
+                    `<div data-folder="${folders}" class="card rounded flex-c">
+                    <div data-folder="${folders}" class="play">
+                        <img src="/images/playbutton.svg" alt="">
+                    </div>
+                    <img class="rounded-1" src="/songs/${folders}/cover.jpg" alt="">
+                    <div class="f-1">${response.title}</div>
+                    <div class="f-2-light">${response.description}</div>
+                </div>`)
+            }
+        }
+    }
+
+    //Load the playlist when the card is clicked
+    document.querySelectorAll(".card").forEach(item => {
+        item.addEventListener("click", async event => {
+            songs = await getSongs(event.currentTarget.dataset.folder);
+            loadPlaylist();
+            // playMusic(songs.song[0],songs.songsName[0],true)      
+            // play.src = "/images/playbutton.svg";
+        })
+    })
+
+    document.querySelectorAll(".play").forEach(item => {
+        item.addEventListener("click", async event => {
+            event.stopPropagation();
+            songs = await getSongs(event.currentTarget.dataset.folder);
+            loadPlaylist();
+            document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
+            playMusic(songs.song[0], songs.songsName[0])
+        })
+    })
+
+}
+
 async function main() {
+
     // Get the list of all Songs 
     songs = await getSongs("Arjit_Singh");
     playMusic(songs.song[0], songs.songsName[0], true);
 
     // Show all songs in the playlist
     loadPlaylist();
-    
+
+    displayAlbums();
+
     document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
 
     //To change the color of playlist songs
@@ -294,23 +352,30 @@ async function main() {
             currentSong.currentTime -= 10;
         }
     })
+
+
+    // For Volume 
     document.addEventListener("keydown", (e) => {
-        if (currentSong.volume > 0.05) {
-            if (e.key == "ArrowDown") {
+        if (e.key == "ArrowDown") {
+            if (currentSong.volume < 0.1) {
+                currentSong.volume = 0;
+            }
+            else {
                 currentSong.volume -= 0.1;
             }
         }
     })
     document.addEventListener("keydown", (e) => {
-        if (currentSong.volume < 0.99) {
-            if (e.key == "ArrowUp") {
+        if (e.key == "ArrowUp") {
+            if (currentSong.volume > 0.9) {
+                currentSong.volume = 1
+            }
+            else {
                 currentSong.volume += 0.1;
             }
         }
     })
 
-
-    // For Volume 
     currentSong.volume = 0.4;
 
     document.querySelector(".forheights").addEventListener("click", e => {
@@ -318,15 +383,15 @@ async function main() {
         if (!e.target.classList.contains('circles')) {
 
             // Calculate the percentage based on the width of .forheight
-            let percent = (e.offsetX / forheights.getBoundingClientRect().width) * 98;
+            let percent = (e.offsetX / forheights.getBoundingClientRect().width) * 75;
             document.querySelector(".circles").style.left = percent + "%";
             document.querySelector(".colors").style.width = percent + "%";
-            currentSong.volume = percent / 98;
+            currentSong.volume = percent / 80;
 
         }
     });
     currentSong.addEventListener("volumechange", () => {
-        if (currentSong.volume < 0.05) {
+        if (currentSong.volume == 0) {
             volume.src = "/images/mute.svg"
         }
         else if (currentSong.volume < 0.6) {
@@ -335,7 +400,7 @@ async function main() {
         else {
             volume.src = "images/volume_high.svg"
         }
-        document.querySelector(".circles").style.left = (currentSong.volume) * 99 + "%";
+        document.querySelector(".circles").style.left = (currentSong.volume) * 100 + "%";
 
         document.querySelector(".colors").style.width = (currentSong.volume) * 100 + "%";
     })
@@ -351,26 +416,16 @@ async function main() {
         document.querySelector(".colors").style.backgroundColor = "";
     })
 
-
-    //Load the playlist when the card is clicked
-    document.querySelectorAll(".card").forEach(item => {
-        item.addEventListener("click", async event => {
-            songs = await getSongs(event.currentTarget.dataset.folder);  
-            loadPlaylist();
-            // playMusic(songs.song[0],songs.songsName[0],true)      
-            // play.src = "/images/playbutton.svg";
-        })
-    })
-
-    document.querySelectorAll(".play").forEach(item => {
-        item.addEventListener("click", async event => {
-            event.stopPropagation();
-            songs = await getSongs(event.currentTarget.dataset.folder);  
-            loadPlaylist();
-            document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black"; 
-            playMusic(songs.song[0],songs.songsName[0])  
-        })
+    //Mute Volume
+    let currentVolume = 0.4;
+    document.getElementById("Volume").addEventListener("click", () => {
+        if (currentSong.volume > 0) {
+            currentVolume = currentSong.volume
+            currentSong.volume = 0;
+        }
+        else {
+            currentSong.volume = currentVolume;
+        }
     })
 }
-
 main();

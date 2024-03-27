@@ -226,7 +226,7 @@ body {
 
 .card:hover .play{
     opacity: 1;
-    bottom: 61px;
+    bottom: 45px;
 }
 
 .card img {
@@ -396,13 +396,14 @@ body {
 }
 
 
-.songVolume img{
+#Volume{
+    cursor: pointer;
     width: 22px;
 }
 
 .seekbarz{
     border-radius: 3px;
-    width: 80%;
+    width: 100%;
     justify-content: center;
     align-items: center;
     background-color: rgb(77, 77, 77);
@@ -433,4 +434,5 @@ body {
     padding: 3px 0px;
     width: 100%;
     cursor: pointer;
+    /* background-color: red; */
 }
