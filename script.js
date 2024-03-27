@@ -7,6 +7,7 @@ let isShuffle = false;
 let isrepeat = false;
 let previousNumber = [];
 let volume = document.getElementById("Volume")
+let songs;
 
 
 function secondsToTime(seconds) {
@@ -25,10 +26,11 @@ function secondsToTime(seconds) {
     return minutesString + ':' + secondsString;
 }
 
+
 //Get songs
-async function getSongs() {
+async function getSongs(folder) {
     // let a = await fetch("http://127.0.0.1:5500/songs/")
-    let a = await fetch("http://192.168.1.101:3000/songs/")
+    let a = await fetch(`http://192.168.1.101:3000/songs/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -49,6 +51,7 @@ async function getSongs() {
     return { songsName: songsName, song: songs };
 }
 
+
 //To play songs that is in the track
 const playMusic = (track, name, pause = false) => {
     currentSong.src = track;
@@ -68,13 +71,10 @@ const playMusic = (track, name, pause = false) => {
     </div>`
 }
 
-async function main() {
-    // Get the list of all Songs 
-    let songs = await getSongs();
-    playMusic(songs.song[0], songs.songsName[0], true);
-
-    // Show all songs in the playlist
+function loadPlaylist(){
+    //Load Playlist
     let SongUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
+    SongUl.innerHTML = "";
     for (const song of songs.songsName) {
         let parts = song.split("-")
         let songName = parts[0];
@@ -85,17 +85,6 @@ async function main() {
             <div class="songName f-5">${songName}</div>
             <div class="songArtist f-2-light">${ArtistName}</div>
         </div></li>`)
-    }
-    document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
-
-    //To change the color of playlist songs
-    function changecolor(change) {
-        if (0 <= change && change < songs.song.length) {
-            Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
-                item.style.backgroundColor = "";
-            })
-            document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
-        }
     }
 
     // Attach event listener to each songs 
@@ -108,6 +97,27 @@ async function main() {
             playMusic(songs.song[index], songs.songsName[index])
         })
     });
+}
+
+async function main() {
+    // Get the list of all Songs 
+    songs = await getSongs("Arjit_Singh");
+    playMusic(songs.song[0], songs.songsName[0], true);
+
+    // Show all songs in the playlist
+    loadPlaylist();
+    
+    document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
+
+    //To change the color of playlist songs
+    function changecolor(change) {
+        if (0 <= change && change < songs.song.length) {
+            Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
+                item.style.backgroundColor = "";
+            })
+            document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
+        }
+    }
 
     // Attach event listener to play
     play.addEventListener("click", (element) => {
@@ -330,7 +340,7 @@ async function main() {
         document.querySelector(".colors").style.width = (currentSong.volume) * 100 + "%";
     })
 
-    //Hover effect
+    //Hover effect for volume bar
     document.querySelector(".forheights").addEventListener("mouseenter", () => {
         document.querySelector(".circles").style.height = "11px";
         document.querySelector(".colors").style.backgroundColor = "green";
@@ -341,6 +351,26 @@ async function main() {
         document.querySelector(".colors").style.backgroundColor = "";
     })
 
+
+    //Load the playlist when the card is clicked
+    document.querySelectorAll(".card").forEach(item => {
+        item.addEventListener("click", async event => {
+            songs = await getSongs(event.currentTarget.dataset.folder);  
+            loadPlaylist();
+            // playMusic(songs.song[0],songs.songsName[0],true)      
+            // play.src = "/images/playbutton.svg";
+        })
+    })
+
+    document.querySelectorAll(".play").forEach(item => {
+        item.addEventListener("click", async event => {
+            event.stopPropagation();
+            songs = await getSongs(event.currentTarget.dataset.folder);  
+            loadPlaylist();
+            document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black"; 
+            playMusic(songs.song[0],songs.songsName[0])  
+        })
+    })
 }
 
 main();
