@@ -29,7 +29,7 @@ function secondsToTime(seconds) {
 
 //Get songs
 async function getSongs(folder) {
-    // let a = await fetch("http://127.0.0.1:5500/songs/")
+    // let a = await fetch(`http://127.0.0.1:5500/songs/${folder}`)
     let a = await fetch(`http://192.168.1.101:3000/songs/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
@@ -59,7 +59,6 @@ const playMusic = (track, name, pause = false) => {
         currentSong.play();
         play.src = "/images/pause.svg"
     }
-
     let parts = name.split("-")
     let songName = parts[0];
     let ArtistName = parts[1];
@@ -106,16 +105,17 @@ async function displayAlbums() {
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a");
-
+    
     for (const key in as) {
         if (Object.hasOwnProperty.call(as, key)) {
             const element = as[key];
-            if (element.href.includes("/songs")) {
-                // let folder = element.title.slice(0, -1);
-                let folders = element.innerText.slice(0, -1);
+            if (element.href.includes("/songs") && !element.href.includes(".htaccess")) {
+                // let folders = element.title;
+                let folders = element.innerText.slice(0,-1);
 
                 //Get the metadata of the folder
-                let a = await fetch(`http://192.168.1.101:3000/songs/${folders}/info.json`)
+                // let a = await fetch(`http://127.0.0.1:5500/songs/${folders}/info.json`)
+                let a = await fetch(`http://192.168.1.101:3000/songs/${folders}/info.json`) 
                 let response = await a.json();
 
                 let cards = document.querySelector(".cardContainer")
@@ -445,3 +445,4 @@ async function main() {
     // document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
 }
 main();
+
