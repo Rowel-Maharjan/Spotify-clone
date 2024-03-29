@@ -51,6 +51,16 @@ async function getSongs(folder) {
     return { songsName: songsName, song: songs };
 }
 
+//To change the color of playlist songs
+function changecolor(change) {
+    if (0 <= change && change < songs.song.length) {
+        Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
+            item.style.backgroundColor = "";
+        })
+        document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
+    }
+}
+
 
 //To play songs that is in the track
 const playMusic = (track, name, pause = false) => {
@@ -85,7 +95,7 @@ function loadPlaylist() {
             <div class="songArtist f-2-light">${ArtistName}</div>
         </div></li>`)
     }
-    
+
     // Attach event listener to each songs 
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e, index) => {
         e.addEventListener("click", element => {
@@ -105,17 +115,17 @@ async function displayAlbums() {
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a");
-    
+
     for (const key in as) {
         if (Object.hasOwnProperty.call(as, key)) {
             const element = as[key];
             if (element.href.includes("/songs") && !element.href.includes(".htaccess")) {
                 // let folders = element.title;
-                let folders = element.innerText.slice(0,-1);
+                let folders = element.innerText.slice(0, -1);
 
                 //Get the metadata of the folder
                 // let a = await fetch(`http://127.0.0.1:5500/songs/${folders}/info.json`)
-                let a = await fetch(`http://192.168.1.101:3000/songs/${folders}/info.json`) 
+                let a = await fetch(`http://192.168.1.101:3000/songs/${folders}/info.json`)
                 let response = await a.json();
 
                 let cards = document.querySelector(".cardContainer")
@@ -137,6 +147,13 @@ async function displayAlbums() {
         item.addEventListener("click", async event => {
             songs = await getSongs(event.currentTarget.dataset.folder);
             loadPlaylist();
+            let currentPlay = document.querySelector(".music-infos").querySelector(".songName").innerText
+            let songNames = Array.from(document.querySelector(".songList").getElementsByClassName("songName")).map(item => item.innerText)
+
+            let index = songNames.indexOf(currentPlay);
+            if(index != -1){
+                changecolor(index);
+            }
             const hamburgerButton = document.querySelector(".hamburger");
             if (hamburgerButton) {
                 hamburgerButton.click();
@@ -154,12 +171,12 @@ async function displayAlbums() {
         })
     })
 
-    document.querySelectorAll(".card").forEach(item=>{
-        item.addEventListener("click",e=>{
-            document.querySelectorAll(".card").forEach(item=>{
-                item.style.backgroundColor= "";
+    document.querySelectorAll(".card").forEach(item => {
+        item.addEventListener("click", e => {
+            document.querySelectorAll(".card").forEach(item => {
+                item.style.backgroundColor = "";
             })
-            item.style.backgroundColor= "#232323";
+            item.style.backgroundColor = "#232323";
         })
     })
 
@@ -171,6 +188,7 @@ async function main() {
     songs = await getSongs("Arjit_Singh");
     playMusic(songs.song[0], songs.songsName[0], true);
 
+
     // Show all songs in the playlist
     loadPlaylist();
 
@@ -178,15 +196,6 @@ async function main() {
 
     document.querySelector(".songList").getElementsByTagName("li")[0].style.backgroundColor = "black";
 
-    //To change the color of playlist songs
-    function changecolor(change) {
-        if (0 <= change && change < songs.song.length) {
-            Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
-                item.style.backgroundColor = "";
-            })
-            document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
-        }
-    }
 
     // Attach event listener to play
     play.addEventListener("click", (element) => {
