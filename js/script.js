@@ -151,7 +151,7 @@ async function displayAlbums() {
             let songNames = Array.from(document.querySelector(".songList").getElementsByClassName("songName")).map(item => item.innerText)
 
             let index = songNames.indexOf(currentPlay);
-            if(index != -1){
+            if (index != -1) {
                 changecolor(index);
             }
             const hamburgerButton = document.querySelector(".hamburger");
@@ -447,11 +447,6 @@ async function main() {
             currentSong.volume = currentVolume;
         }
     })
-
-    // Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(item => {
-    //     item.style.backgroundColor = "";
-    // })
-    // document.querySelector(".songList").getElementsByTagName("li")[change].style.backgroundColor = "black";
 }
 main();
 
