@@ -1,0 +1,110 @@
+.playbar {
+    padding: 0px 18px;
+    position: relative;
+}
+
+.container {
+    padding: 0px;
+}
+
+.songButton img {
+    z-index: 10;
+    width: 12px;
+    margin: 0px 8px 4px 8px;
+}
+
+#playSong {
+    padding: 3px;
+}
+
+.audioinfo {
+    width: 100%;
+    gap: 5px;
+}
+
+.playbar {
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.songinfo {
+    justify-content: center;
+    width: 100%;
+}
+
+.music-infos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.songinfo img {
+    display: none;
+}
+
+.songVolume {
+    display: none;
+}
+
+.cardContainer {
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.pointer {
+    display: none;
+}
+
+.play{
+    display: none;
+}
+
+.card img{
+    object-fit: cover;
+}
+
+.card {
+    width: 80vw;
+}
+
+.f-1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+}
+
+.f-2-light {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(179, 179, 179);
+
+}
+
+.f-4 {
+    font-size: 27px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    padding-left: 12px;
+}
+
+.left {
+    width: 99vw;
+    height: 80vh;
+}
+
+.right {
+    height: 80vh;
+    margin-bottom: 10px;
+}
+
+.p-2 {
+    padding: 19px 9px;
+}
+
+::-webkit-scrollbar {
+    width: 1px;
+}

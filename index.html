@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/utility.css" />
+    <link
+      rel="stylesheet"
+      href="/css/phone.css"
+      media="screen and (max-width: 1000px)"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/phones.css"
+      media="screen and (max-width: 550px)"
+    />
+  </head>
+
+  <body>
+    <div class="container flex">
+      <div class="left">
+        <div class="home bg-gray p-1 rounded">
+          <div class="closeHamburger flex">
+            <div class="logo">
+              <img src="/images/logo.svg" alt="Logo" />
+            </div>
+            <div class="cancel">
+              <img src="/images/cancel.svg" alt="" />
+            </div>
+          </div>
+          <ul class="f-1-light">
+            <li class="small-logo">
+              <img src="/images/home.svg" alt="Home" />Home
+            </li>
+            <li class="small-logo">
+              <img src="/images/search.svg" alt="Search" />Search
+            </li>
+          </ul>
+        </div>
+
+        <div class="library bg-gray rounded flex-c">
+          <div class="okay flex">
+            <div class="lib small-logo flex p-1 f-1-light">
+              <img src="/images/library.svg" alt="Library" />Your Library
+            </div>
+
+            <div class="p-1 icon-width">
+              <button><img src="/images/plus.svg" alt="Add" /></button>
+            </div>
+          </div>
+
+          <div class="songList">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="right bg-black1">
+        <div class="header flex rounded">
+          <div class="nav flex">
+            <button class="hamburger">
+              <img src="/images/hamburger.svg" alt="" />
+            </button>
+            <button class="remove">
+              <img src="/images/left-arrow.svg" alt="" />
+            </button>
+            <button class="remove">
+              <img src="/images/right-arrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="button">
+            <button class="signup f-1-light">Sign Up</button>
+            <button class="login">Login</button>
+          </div>
+        </div>
+
+        <div class="spotify-playlist p-2 flex-c">
+          <div class="info flex">
+            <div class="f-4">Spotify Playlists</div>
+            <div class="pointer f-2-light">Show all</div>
+          </div>
+          <div class="cardContainer flex"></div>
+        </div>
+      </div>
+    </div>
+    <div class="playbar flex">
+      <div class="songinfo flex"></div>
+      <div class="audioinfo flex-c">
+        <div class="songButton flex">
+          <img id="shuffle" src="/images/shuffle.svg" alt="" />
+          <img id="previous" src="/images/previous.svg" alt="" />
+          <img id="playSong" src="/images/playbutton.svg" alt="" />
+          <img id="next" src="/images/next.svg" alt="" />
+          <img id="repeat" src="/images/repeat.svg" alt="" />
+        </div>
+        <div class="status flex f-2">
+          <div class="passedTime">00:00</div>
+          <div class="forheight">
+            <div class="seekbar flex">
+              <div class="color"></div>
+              <div class="circle"></div>
+            </div>
+          </div>
+          <div class="totalDuration">00:00</div>
+        </div>
+      </div>
+      <div class="songVolume flex">
+        <img id="Volume" src="/images/volume_low.svg" alt="" />
+        <div class="forheights">
+          <div class="seekbarz flex">
+            <div class="colors"></div>
+            <div class="circles"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script2.js"></script>
+  </body>
+</html>

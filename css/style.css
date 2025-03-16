@@ -1,0 +1,439 @@
+* {
+    font-family: "Roboto", sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.container {
+    padding: 8px;
+    gap: 7px;
+}
+
+.left {
+    width: 27vw;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    /* max-height: calc(88vh + 4px); */
+    height: 86vh;
+}
+
+.logo img {
+    width: 80px;
+}
+
+.cancel{
+    display: none;
+}
+
+.home {
+    height: 100px;
+}
+
+.home ul li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 13px;
+    margin: 16px 0px 0px 0px;
+    cursor: pointer;
+}
+
+.home ul li:hover {
+    color: white;
+}
+
+.library {
+    position: relative;
+    height: calc(85vh - 100px);
+}
+
+.lib {
+    align-items: center;
+    gap: 13px;
+}
+
+.lib:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.okay {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.okay button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 60px;
+
+}
+
+.okay button:hover {
+    background-color: #0c0c0c;
+}
+
+.box {
+    padding: 0px 5px;
+    gap: 17px;
+}
+
+
+
+.left-gap {
+    gap: 8px;
+}
+
+.left-gap button {
+    margin-top: 7px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    gap: 10px;
+    margin-top: 45px;
+}
+
+
+.foot {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.foot a {
+    color: rgb(167, 167, 167);
+    text-decoration: none;
+}
+
+.below a {
+    text-decoration: none;
+    color: rgb(179, 179, 179);
+}
+
+.below a:hover {
+    text-decoration: underline;
+}
+
+#world {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
+.right {
+    width: 100vw;
+    border-radius: 8px;
+    /* max-height: calc(86vh + 4px); */
+    height: 86vh;
+    overflow: auto;
+}
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 18px;
+    position: sticky;
+    top: 0px;
+    background-color: rgb(24, 24, 24);
+    z-index: 1;
+}
+.hamburger{
+    display: none;
+}
+
+.nav {
+    gap: 5px;
+}
+
+.nav img {
+    width: 11px;
+}
+
+.nav button {
+    cursor: pointer;
+    background-color: black;
+    border-radius: 47px;
+    border: none;
+    padding: 4px 6px;
+}
+
+.login {
+    margin-left: 19px;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 21px;
+    cursor: pointer;
+}
+
+.login:hover {
+    transform: scale(1.05, 1.02);
+}
+
+.signup {
+    background-color: transparent;
+    padding: 7px;
+    border: none;
+}
+
+.signup:hover {
+    color: white;
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+
+.info {
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.cardContainer {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.card {
+    padding: 11px 11px;
+    width: 135px;
+    gap: 5px;
+    position: relative;
+    background-color: rgb(23, 23, 23);
+    cursor: pointer;
+}
+
+.card:hover{
+    background-color: #232323;
+}
+
+.card:hover .play{
+    opacity: 1;
+    bottom: 45px;
+}
+
+.card img {
+    margin-bottom: 5px;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
+
+.play {
+    position: absolute;
+    right: 15px;
+    opacity: 0;
+    bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.play img {
+    background-color: #1ed760;
+    width: 20px;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.play img:hover {
+    background-color: #1fdf64;
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+.playbar {
+    padding: 4px 18px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.audioinfo {
+    /* background-color: green; */
+    width: 55%;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+}
+
+.status {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.seekbar {
+    border-radius: 3px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(77, 77, 77);
+    position: relative;
+    height: 4px;
+}
+
+.color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.forheight {
+    height: 4px;
+    padding: 3px 0px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.circle {
+    background-color: white;
+    width: 11px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0%;
+    transition: left 0.1s linear;
+}
+
+
+#playSong {
+    background-color: white;
+    width: 14px;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+#playSong:hover {
+    transform: scale(1.05, 1.05);
+}
+
+.songButton {
+    justify-content: center;
+    align-items: center;
+}
+
+.songButton img {
+    margin: 0px 12px;
+    width: 14px;
+    cursor: pointer;
+    padding: 3px;
+}
+
+
+.songList {
+    height: calc(91vh - 80px - 27vh);
+    overflow: auto;
+}
+
+.songList ul {
+    padding: 0px 10px;
+}
+
+.songList ul li {
+    width: 96%;
+    padding: 6.5px;
+    list-style: none;
+    gap: 10px;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.songList ul li:hover {
+    border-radius: 5px;
+    background-color: rgb(26, 26, 26);
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.songList ul img {
+    width: 22px;
+    background-color: rgb(40, 40, 40);
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.songinfo {
+    /* background-color: red; */
+    width: 14%;
+    gap: 10px;
+}
+
+.songinfo img {
+    width: 22px;
+    background-color: rgb(40, 40, 40);
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.songVolume {
+    width: 12%;
+    /* background-color: red; */
+    justify-content: end;
+    align-items: center;
+    gap: 3px;
+}
+
+
+#Volume{
+    cursor: pointer;
+    width: 22px;
+}
+
+.seekbarz{
+    border-radius: 3px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(77, 77, 77);
+    position: relative;
+    height: 4px;
+}
+
+.circles{
+    background-color: white;
+    width: 11px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0%;
+    transition: left 0.1s linear;
+}
+
+.colors {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.forheights {
+    height: 4px;
+    padding: 3px 0px;
+    width: 100%;
+    cursor: pointer;
+    /* background-color: red; */
+}
