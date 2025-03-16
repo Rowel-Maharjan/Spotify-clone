@@ -30,7 +30,7 @@ function secondsToTime(seconds) {
 //Get songs
 async function getSongs(folder) {
     // let a = await fetch(`http://127.0.0.1:5500/songs/${folder}`)
-    let a = await fetch(`http://192.168.1.101:3000/songs/${folder}/`)
+    let a = await fetch(`/songs/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -110,7 +110,7 @@ function loadPlaylist() {
 
 async function displayAlbums() {
     // let a = await fetch("http://127.0.0.1:5500/songs/")
-    let a = await fetch(`http://192.168.1.101:3000/songs/`)
+    let a = await fetch(`/songs/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -121,11 +121,11 @@ async function displayAlbums() {
             const element = as[key];
             if (element.href.includes("/songs") && !element.href.includes(".htaccess")) {
                 // let folders = element.title;
-                let folders = element.innerText.slice(0, -1);
+                let folders = element.innerText.slice(0,);
 
                 //Get the metadata of the folder
                 // let a = await fetch(`http://127.0.0.1:5500/songs/${folders}/info.json`)
-                let a = await fetch(`http://192.168.1.101:3000/songs/${folders}/info.json`)
+                let a = await fetch(`/songs/${folders}/info.json`)
                 let response = await a.json();
 
                 let cards = document.querySelector(".cardContainer")
