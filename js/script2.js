@@ -69,7 +69,7 @@ const playMusic = (track, name, pause = false) => {
   currentSong.src = track;
   if (!pause) {
     currentSong.play();
-    play.src = "/images/pause.svg";
+    play.src = "images/pause.svg";
   }
   let parts = name.split("-");
   let songName = parts[0];
@@ -77,7 +77,7 @@ const playMusic = (track, name, pause = false) => {
 
   document.querySelector(
     ".songinfo"
-  ).innerHTML = `<img src="/images/music.svg" alt="">
+  ).innerHTML = `<img src="images/music.svg" alt="">
     <div class="music-infos">
         <div class="songName f-5">${songName}</div>
         <div class="songArtist f-2-light">${ArtistName}</div>
@@ -97,7 +97,7 @@ function loadPlaylist() {
     SongUl.insertAdjacentHTML(
       "beforeend",
       `<li class = "flex">
-        <img src="/images/music.svg" alt="">
+        <img src="images/music.svg" alt="">
         <div class="music-info flex-c">
             <div class="songName f-5">${songName}</div>
             <div class="songArtist f-2-light">${ArtistName}</div>
@@ -151,7 +151,7 @@ async function displayAlbums() {
           "beforeend",
           `<div data-folder="${folders}" class="card rounded flex-c">
                     <div data-folder="${folders}" class="play">
-                        <img src="/images/playbutton.svg" alt="">
+                        <img src="images/playbutton.svg" alt="">
                     </div>
                     <img class="rounded-1" src="/songs/${folders}/cover.jpg" alt="">
                     <div class="f-1">${response.title}</div>
@@ -225,10 +225,10 @@ async function main() {
   play.addEventListener("click", (element) => {
     if (currentSong.paused) {
       currentSong.play();
-      play.src = "/images/pause.svg";
+      play.src = "images/pause.svg";
     } else {
       currentSong.pause();
-      play.src = "/images/playbutton.svg";
+      play.src = "images/playbutton.svg";
     }
   });
 
@@ -279,7 +279,7 @@ async function main() {
         }
         if (index + 1 == songs.song.length) {
           currentSong.pause();
-          play.src = "/images/playbutton.svg";
+          play.src = "images/playbutton.svg";
         }
       }
     }
@@ -324,7 +324,7 @@ async function main() {
       index = songs.song.indexOf(currentSong.src);
       changecolor(index + 1);
       if (index + 1 < songs.song.length) {
-        play.src = "/images/pause.svg";
+        play.src = "images/pause.svg";
         playMusic(songs.song[index + 1], songs.songsName[index + 1]);
       }
     }
@@ -346,22 +346,22 @@ async function main() {
   //For shuffle
   document.getElementById("shuffle").addEventListener("click", () => {
     if (isShuffle) {
-      shuffle.src = "/images/shuffle.svg";
+      shuffle.src = "images/shuffle.svg";
       isShuffle = false;
     } else {
       isShuffle = true;
-      shuffle.src = "/images/shuffleafter.svg";
+      shuffle.src = "images/shuffleafter.svg";
     }
   });
 
   //For repeat
   document.getElementById("repeat").addEventListener("click", () => {
     if (isrepeat) {
-      repeat.src = "/images/repeat.svg";
+      repeat.src = "images/repeat.svg";
       isrepeat = false;
     } else {
       isrepeat = true;
-      repeat.src = "/images/repeatclick.svg";
+      repeat.src = "images/repeatclick.svg";
     }
   });
 
@@ -370,10 +370,10 @@ async function main() {
     if (e.key == " ") {
       if (currentSong.paused) {
         currentSong.play();
-        play.src = "/images/pause.svg";
+        play.src = "images/pause.svg";
       } else {
         currentSong.pause();
-        play.src = "/images/playbutton.svg";
+        play.src = "images/playbutton.svg";
       }
     }
   });
@@ -423,7 +423,7 @@ async function main() {
   });
   currentSong.addEventListener("volumechange", () => {
     if (currentSong.volume == 0) {
-      volume.src = "/images/mute.svg";
+      volume.src = "images/mute.svg";
     } else if (currentSong.volume < 0.6) {
       volume.src = "images/volume_low.svg";
     } else {
