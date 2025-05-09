@@ -28,7 +28,7 @@ function secondsToTime(seconds) {
 
 //Get songs
 async function getSongs(folder) {
-  let a = await fetch(`http://127.0.0.1:5500/songs/${folder}`);
+  let a = await fetch(`songs/${folder}`);
   // let a = await fetch(`http://192.168.1.101:3000/songs/${folder}/`)
   let response = await a.text();
   let div = document.createElement("div");
@@ -142,7 +142,7 @@ async function displayAlbums() {
         // let folders = element.innerText.slice(0, -1);
 
         //Get the metadata of the folder
-        let a = await fetch(`http://127.0.0.1:5500/songs/${folders}/info.json`);
+        let a = await fetch(`songs/${folders}/info.json`);
         // let a = await fetch(`http://192.168.1.101:3000/songs/${folders}/info.json`)
         let response = await a.json();
 
